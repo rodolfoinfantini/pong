@@ -49,7 +49,6 @@ function update(time) {
 
 function point(playerWon) {
     ball.reset()
-    console.log(playerWon ? 'you won' : 'you lost')
     if (playerWon) points.player++
     else points.computer++
 }

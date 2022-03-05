@@ -33,7 +33,6 @@ export default class Paddle {
     moveTo(y) {
         y = y - this.height / 2
         this.pos.y = clamp(y, 0, this.canvas.height - this.height)
-        // this.pos.y = Math.min(y, this.canvas.height - this.height)
     }
 }
 
