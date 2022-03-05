@@ -52,23 +52,25 @@ export default class Ball {
     }
 
     update(deltaTime, canvas, ctx, paddles = [], onPoint) {
+        let point = true
         paddles.forEach((paddle) => {
             if (
-                this.pos.x + this.radius > paddle.pos.x &&
-                this.pos.x - this.radius < paddle.pos.x + paddle.width + 5 &&
+                this.pos.x + this.radius > paddle.pos.x - 10 &&
+                this.pos.x - this.radius < paddle.pos.x + paddle.width + 10 &&
                 this.pos.y + this.radius > paddle.pos.y &&
                 this.pos.y - this.radius < paddle.pos.y + paddle.height
             ) {
                 this.vel.x = -this.vel.x
+                point = false
             }
         })
         if (this.pos.y - this.radius < 0 || this.pos.y + this.radius > canvas.height) {
             this.vel.y = -this.vel.y
         }
 
-        if (typeof onPoint === 'function') {
-            if (this.pos.x - this.radius < 0) onPoint(false)
-            else if (this.pos.x + this.radius > canvas.width) onPoint(true)
+        if (typeof onPoint === 'function' && point) {
+            if (this.pos.x + this.radius < 0) onPoint(false)
+            else if (this.pos.x - this.radius > canvas.width) onPoint(true)
         }
 
         this.pos.x += this.vel.x * deltaTime
