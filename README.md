@@ -1,2 +1,2 @@
 # pong
-[Page](https://sirvorak.github.io/pong/)
+[Page](https://rodolfoinfantini.github.io/pong/)
